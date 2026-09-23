@@ -1,4 +1,4 @@
-# 世界来信：项目设计
+# 世界来信：系统设计与实现说明
 
 ## 1. 项目目标
 
@@ -25,7 +25,7 @@
 - 不批量预生成几十篇成稿。
 - 不把搜索摘要、模型记忆或旅游营销文案当成证据。
 - 不把 AI 风景图、错位照片或无授权图片当成真实地点照片。
-- 不自动决定“已发布”；人工只能通过计划中的 `python main.py publish YYYY-MM-DD` 登记真实发布结果。
+- 不自动登录或发布；真实发布后由人工通过 `python main.py publish DATE` 显式登记。
 - 不根据虚构的阅读、收藏、评论或关注数据优化。
 
 ## 4. 核心工作流
@@ -52,26 +52,26 @@
 
 ### 5.1 基础栈
 
-- Python 3.10：CLI、状态机、SQLite、检索适配器、校验和归档。
+- Python 3.10+：CLI、状态机、SQLite、检索适配器、校验和归档。
 - SQLite：候选地点、别名、主题标签、运行记录、使用/发布历史、内容指纹、来源和运营数据。
 - JSON Schema：约束模型输出和各阶段中间产物。
 - HTML/CSS：版面模板；Playwright + Chromium：固定视口截图为 1080×1440 PNG。
 - Pillow：图片尺寸、裁切、清晰度和 PNG 校验。
 - pypdf：将可检索 PDF 转为可核对的缓存正文；扫描型 PDF 仍会被硬门禁拒绝。
 - Jinja2：将结构化内容渲染进模板。
-- 地图：Wikidata/权威来源坐标 + Natural Earth 边界数据，使用 GeoPandas/Matplotlib 或等价的本地矢量流程生成；不让生成式模型绘制地图。
+- 地图：经核验的地点坐标 + Natural Earth 行政边界；使用 pyshp 读取边界并生成 SVG 定位图，不让生成式模型绘制地图。
 
-依赖会在对应阶段安装并锁定版本；阶段 0 不提前安装。
+Python 依赖及版本约束列在 pyproject.toml；Playwright 浏览器另行安装或使用本机已安装的 Edge。
 
 ### 5.2 模型调用
 
-默认适配器计划使用本机 `codex.cmd exec`，配合 `--output-schema` 生成可验证 JSON。当前机器安装了 Codex CLI 0.153.4，并显示已通过 ChatGPT 登录；当前没有任何已检测到的 API Key。
+真实研究与写作通过本机已安装并完成认证的 Codex CLI 执行非交互式调用，并使用 JSON Schema 约束结构化输出。运行者需自行安装并登录 Codex CLI；认证信息保存在本机，不属于仓库配置。
 
-官方非交互模式支持脚本/计划任务、复用已保存的 CLI 身份，并可输出 JSONL 或按 JSON Schema 约束结果。实现时使用最小权限、明确超时与失败重试；不把认证文件或密钥写入仓库。参考：<https://learn.chatgpt.com/docs/non-interactive-mode>。
+调用采用有限超时和失败处理，不把认证文件或密钥写入仓库。Codex CLI 的安装与认证方式见[官方文档](https://developers.openai.com/codex/cli)。
 
 降级策略：
 
-1. Codex 登录有效：运行研究整理、文案和独立复核代理。
+1. Codex CLI 已安装且认证有效：运行研究整理、文案和独立复核。
 2. 登录失效/限额：停止在相应阶段，保留已完成产物并给出恢复命令；不退化为无来源的模板文案。
 3. 后续若改用付费 API：只在用户显式配置后启用，按单次进程注入密钥，并记录模型、时间和调用状态，不记录密钥。
 
@@ -88,7 +88,7 @@
 
 每条 `claim` 记录：原文支持片段或精确定位、规范化陈述、类型、来源 ID、访问日期、适用时间、限制、复核状态。动态网页或无法定位证据的页面不得支撑关键事实。
 
-### 5.3.1 文案与知识库（阶段 3 已实现）
+### 5.3.1 文案与知识库
 
 - 写作只读取已通过审计且 SHA-256 与审计记录一致的 `research_package.json`；研究文件被改动后必须重新审计。
 - 标题、正文段落、卡片标题与正文、学习笔记总览与条目分别保存 `claim_refs`，下游可反查原始来源。
@@ -104,7 +104,7 @@
 
 无合格实拍时，只能使用自制真实数据地图、信息图，或明确标为“概念插画”的合法素材；概念插画不能表现成现场实景。
 
-阶段 4 已实现的 Commons 适配器使用 `imageinfo` 的 URL、尺寸、SHA-1、MIME 与 `extmetadata`，并读取页面分类和嵌入坐标。自动地点核验要求描述与精确地点分类同时命中，或地点文本命中且嵌入坐标距审计坐标不超过 25 km；仅文件名命中不会通过。正式渲染要求至少三张不同图片，缺作者、许可证、许可链接、署名或地点证据时停止。所有下载文件重新计算 SHA-256，保留原文件并只用 CSS `object-fit: cover` 进行非破坏性裁切。
+当前 Commons 适配器使用 `imageinfo` 的 URL、尺寸、SHA-1、MIME 与 `extmetadata`，并读取页面分类和嵌入坐标。自动地点核验要求描述与精确地点分类同时命中，或地点文本命中且嵌入坐标距审计坐标不超过 25 km；仅文件名命中不会通过。正式渲染要求至少三张不同图片，缺作者、许可证、许可链接、署名或地点证据时停止。所有下载文件重新计算 SHA-256，保留原文件并只用 CSS `object-fit: cover` 进行非破坏性裁切。
 
 ### 5.5 地图策略
 
@@ -114,65 +114,53 @@
 - 地图同时存源数据版本、坐标、投影、生成参数、署名和生成日期。
 - 小岛、飞地或跨日界线地点必须使用插图/局部图处理并进行人工目视核对。
 
-阶段 4 固定使用 Natural Earth 1:110m Admin 0 Countries 5.1.1 制作世界定位图。程序保存原始压缩包、下载链接和 SHA-256，以等距圆柱投影将审计坐标换算为 SVG 像素，并记录默认 de facto 边界视角。1:110m 数据适合世界定位，不用于街道、遗产边界或精细导航；小岛和争议边界仍保留人工目视复核项。
+当前实现使用 Natural Earth 1:110m Admin 0 Countries 5.1.1 制作世界定位图。程序保存原始压缩包、下载链接和 SHA-256，以等距圆柱投影将审计坐标换算为 SVG 像素，并记录默认 de facto 边界视角。1:110m 数据适合世界定位，不用于街道、遗产边界或精细导航；小岛和争议边界仍保留人工目视复核项。
 
-### 5.6 排版与视觉 QA（阶段 4 已实现）
+### 5.6 排版与视觉 QA
 
 - Jinja2 将结构化卡片写入单卡 HTML，CSS 提供统一杂志式网格、字体、色彩与照片裁切。
-- Playwright 调用本机 Microsoft Edge，以 1080×1440、device scale factor 1 截图；无需另外下载浏览器。
+- Playwright 按 config/project.json 指定的浏览器通道，以 1080×1440、device scale factor 1 截图；默认通道为 Microsoft Edge。
 - 每张卡检查指定中文字体、页面及正文容器滚动尺寸、PNG 格式、像素尺寸、文件体积和总张数。
 - 输出 `image_sources.md`、`render_audit.json`、`review_checklist.md`、地图元数据与逐文件 SHA-256 manifest；自动 QA 通过仍不代表人工版权/地点目视复核通过。
 
 ## 6. 数据模型
 
-计划的主要表：
+SQLite 中的表按用途分组：
 
-- `locations`：规范名称、中英文名、国家、地区、洲、坐标、地理类型、主题标签和别名。
-- `topic_candidates`：具体选题角度、吸引点、视觉潜力、知识价值、时效风险和状态。
-- `runs`：阶段、开始/结束时间、错误、重试次数、恢复点和产物路径。
-- `publications`：使用日期、人工审核状态、真实发布时间；发布字段只能由 `publish` 命令写入。
-- `claims` / `sources`：事实与证据的多对多关系、证据定位、限制和复核结果。
-- `assets`：图片/地图授权、地点一致性、哈希、裁切链路和署名。
-- `content_fingerprints`：地点、角度、标题、正文 n-gram/关键词/语义指纹。
-- `metrics`：人工录入的真实曝光、阅读、收藏、评论、关注变化及采集日期。
+- 选题：`locations`、`location_aliases`、`topic_candidates`、`topic_tags`、`candidate_sources` 和 `selections`。
+- 研究：`research_runs`、`research_sources`、`research_claims`、`research_claim_sources` 和 `coordinate_evidence`。
+- 文案：`content_runs` 和 `content_fingerprints`。
+- 每日运行与运营：`daily_runs`、`daily_checkpoints`、`publications` 和 `metrics`。
+- 图片、地图及逐项来源信息归档在每日输出的 manifest 与来源文件中，不单独作为 SQLite 表维护。
 
 Markdown 是供人审核和学习的主界面；SQLite/JSON 是自动化的权威状态。两者由同一结构化对象生成，避免双写分叉。
 
-## 7. 目录规划
+## 7. 仓库与运行目录
+
+仓库提交的是可复用代码、配置、种子和基础地图数据。数据库、每日内容、缓存、知识库正文和日志属于运行数据，默认留在本机并由 .gitignore 排除。
 
 ```text
-daily-world-rednote/
+.
 ├── PROJECT.md
 ├── TASKS.md
 ├── AGENTS.md
 ├── README.md
 ├── main.py
 ├── pyproject.toml
-├── config/
+├── config/project.json
 ├── data/
-│   ├── world.db
-│   ├── seeds/
-│   └── geographic/
+│   ├── migrations/
+│   ├── seeds/locations.json
+│   └── geographic/natural-earth-5.1.1/
 ├── prompts/
 ├── schemas/
+├── scripts/
 ├── src/worldnote/
-│   ├── topics/
-│   ├── research/
-│   ├── writing/
-│   ├── media/
-│   ├── maps/
-│   ├── render/
-│   ├── qa/
-│   └── storage/
 ├── templates/
 ├── tests/
-├── logs/
 ├── knowledge/
-│   ├── index.json
-│   └── places/
-└── output/
-    ├── YYYY-MM-DD/
-    └── _failed/
+│   └── places/.gitkeep
+└── output/                 # 首次运行时创建，不提交
 ```
 
 单日正式输出：
@@ -207,7 +195,7 @@ YYYY-MM-DD/
 - 正式日期目录只在全部自动门禁通过后落成；失败稿进入 `_failed/<run_id>/`。
 - 日志不得包含认证信息、完整提示中的秘密或不必要的个人数据。
 
-阶段 5 已实现上述状态机。正式运行在 `daily_runs` 和 `daily_checkpoints` 中记录状态，工作文件位于 `output/_runs/<date>-<run-id>/`，事件写入 `logs/daily-<run-id>.jsonl`。失败不会删除已完成阶段；同日再次运行复用原 run 和选题。`--restart-stage` 只删除指定阶段及下游、且只允许作用于已验证的运行目录。最终 `output/YYYY-MM-DD/` 由临时目录原子提交，已有目录不会静默覆盖。
+正式运行在 `daily_runs` 和 `daily_checkpoints` 中记录状态，工作文件位于 `output/_runs/<date>-<run-id>/`，事件写入 `logs/daily-<run-id>.jsonl`。失败不会删除已完成阶段；同日再次运行复用原 run 和选题。`--restart-stage` 只重做指定阶段及下游，且只允许作用于已验证的运行目录。最终 `output/YYYY-MM-DD/` 由临时目录原子提交，已有目录不会静默覆盖。
 
 `published` 不是自动流水线状态：只有内容已到 `awaiting_review`，且人工真实发布后显式运行带 `--confirm-reviewed` 的 `publish` 命令才会写入。运营数据同样只接受人工快照；项目不推断、不抓取、不补零，也不根据虚构数据优化。
 
@@ -219,21 +207,11 @@ YYYY-MM-DD/
 
 自动化不能判断的项目明确留给人工：照片是否真的呈现目标地点、文化表述是否冒犯或简化、地图标签是否误导、整体叙事是否自然、平台当期规则和 AI 标识要求。
 
-## 10. 当前环境结论（2026-09-21 实测）
+## 10. 运行依赖与平台边界
 
-| 能力 | 结果 | 结论 |
-|---|---|---|
-| Python | 3.10.5 | 可用 |
-| Node/npm | 24.19.0 / 11.17.0 | 可用 |
-| Codex CLI | 0.153.4，ChatGPT 登录有效 | 可做模型适配；尚未执行付费/生成调用 |
-| 网络 | Wikidata、Nominatim、Wikimedia Commons 测试端点均返回 HTTP 200 | 基础联网可行；正式流程仍需限速、重试和缓存 |
-| 浏览器 | Chrome 与 Edge 可执行文件存在 | 可供 Playwright 使用 |
-| Playwright | CLI 可临时解析；浏览器缓存未安装，项目依赖未锁定 | 排版阶段安装项目依赖与 Chromium |
-| 中文字体 | Noto Sans SC、微软雅黑、思源宋体等存在 | 中文排版可行，模板需固定字体回退 |
-| Python 图像/GIS包 | Pillow、Playwright、Jinja2、GeoPandas 等未安装 | 后续分阶段安装并锁定 |
-| 外部 Key | 未检测到 OpenAI、Mapbox、Unsplash、Pexels 等 Key | 首版采用无需 Key 的合法来源；不假设商业服务可用 |
-| ffmpeg | 系统命令未安装 | 静态图文首版不需要；Playwright 自带组件不作为系统依赖 |
-
-## 11. 已确认的实现约定
-
-项目名称为“世界来信”，目录名为 `daily-world-rednote`。每天由用户手动运行 `python main.py daily`，生成 5～6 张待审核卡片；真实图片优先使用 Wikimedia Commons；地图由本地真实矢量数据生成；研究与写作使用本机 Codex CLI；不创建每日定时任务，不自动登录或发布。
+- Python 3.10 或更高版本；Python 包版本约束见 pyproject.toml。
+- 真实研究和写作需要本机已安装并完成认证的 Codex CLI，以及可访问来源网站的网络连接。
+- 图片搜索和资料网站可能限流、变更或暂时不可用；程序会保留检查点，但不能保证外部服务始终可用。
+- 地图仅为世界范围定位图；Natural Earth 1:110m 边界不适合街道导航或精细遗产边界。
+- 渲染器默认使用 Microsoft Edge 通道和 Microsoft YaHei 字体。其他平台可以调整 config/project.json 的浏览器通道和字体设置；使用 Playwright Chromium 时需另行安装浏览器。
+- 每日流程只生成待审核素材，不创建定时任务、不登录或发布到小红书。任何实际发布和运营数据均由人工确认与登记。
