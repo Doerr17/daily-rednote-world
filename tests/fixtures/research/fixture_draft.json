@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "research_date": "2026-09-21",
+  "topic_id": "fixture-rock-hewn-place",
+  "fixture_mode": true,
+  "location": {
+    "name_zh": "测试用岩石聚落",
+    "name_en": "Fixture Rock-Hewn Place",
+    "country_zh": "测试国",
+    "country_en": "Fixture Country",
+    "region": "测试区域",
+    "continent": "测试洲",
+    "location_type": "测试遗产",
+    "latitude": 12.0311,
+    "longitude": 39.0411,
+    "coordinate_status": "verified",
+    "coordinate_evidence": [
+      {"source_id": "s01", "latitude": 12.0310, "longitude": 39.0410, "locator": "Coordinates section", "evidence_quote": "Coordinates: 12.0310, 39.0410."},
+      {"source_id": "s02", "latitude": 12.0312, "longitude": 39.0412, "locator": "Gazetteer record", "evidence_quote": "Recorded centre: 12.0312 latitude and 39.0412 longitude."}
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "s01",
+      "url": "fixture://research/source-one",
+      "title": "Fixture Heritage Record",
+      "publisher": "Fixture Heritage Authority",
+      "source_type": "fixture",
+      "reliability_tier": "authoritative",
+      "language": "en",
+      "published_at": null,
+      "applicable_at": "2026-09-21",
+      "limitations": "TEST FIXTURE ONLY; not a publishable source."
+    },
+    {
+      "source_id": "s02",
+      "url": "fixture://research/source-two",
+      "title": "Fixture Gazetteer Record",
+      "publisher": "Fixture Mapping Authority",
+      "source_type": "fixture",
+      "reliability_tier": "primary",
+      "language": "en",
+      "published_at": null,
+      "applicable_at": "2026-09-21",
+      "limitations": "TEST FIXTURE ONLY; not a publishable source."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "c01",
+      "statement": "这是用于测试证据链的岩石雕凿建筑群。",
+      "claim_type": "fact",
+      "importance": "core",
+      "volatility": "stable",
+      "as_of": null,
+      "source_refs": [{"source_id": "s01", "locator": "Description paragraph 1", "evidence_quote": "The fixture buildings were carved directly from rock.", "relation": "supports"}]
+    },
+    {
+      "claim_id": "c02",
+      "statement": "建筑之间通过测试用沟槽相连。",
+      "claim_type": "fact",
+      "importance": "supporting",
+      "volatility": "stable",
+      "as_of": null,
+      "source_refs": [{"source_id": "s01", "locator": "Description paragraph 2", "evidence_quote": "Test trenches connect the carved structures.", "relation": "supports"}]
+    },
+    {
+      "claim_id": "c03",
+      "statement": "测试地点的中心坐标由两份独立测试记录支持。",
+      "claim_type": "fact",
+      "importance": "core",
+      "volatility": "stable",
+      "as_of": null,
+      "source_refs": [
+        {"source_id": "s01", "locator": "Coordinates section", "evidence_quote": "Coordinates: 12.0310, 39.0410.", "relation": "supports"},
+        {"source_id": "s02", "locator": "Gazetteer record", "evidence_quote": "Recorded centre: 12.0312 latitude and 39.0412 longitude.", "relation": "supports"}
+      ]
+    }
+  ],
+  "interesting_fact_claim_ids": ["c01", "c02", "c03"],
+  "uniqueness_claim_ids": ["c01"],
+  "travel_claim_ids": [],
+  "unknowns": ["此测试资料不包含真实开放时间。"],
+  "further_questions": ["真实运行时应如何界定遗产边界与地点中心点？"]
+}

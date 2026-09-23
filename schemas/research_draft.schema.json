@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Model-produced research draft before deterministic fetching",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "research_date", "topic_id", "fixture_mode", "location",
+    "sources", "claims", "interesting_fact_claim_ids", "uniqueness_claim_ids",
+    "travel_claim_ids", "unknowns", "further_questions"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "research_date": {"type": "string"},
+    "topic_id": {"type": "string"},
+    "fixture_mode": {"type": "boolean"},
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name_zh", "name_en", "country_zh", "country_en", "region", "continent", "location_type", "latitude", "longitude", "coordinate_status", "coordinate_evidence"],
+      "properties": {
+        "name_zh": {"type": "string"}, "name_en": {"type": "string"},
+        "country_zh": {"type": "string"}, "country_en": {"type": "string"},
+        "region": {"type": "string"}, "continent": {"type": "string"},
+        "location_type": {"type": "string"},
+        "latitude": {"type": "number"}, "longitude": {"type": "number"},
+        "coordinate_status": {"type": "string", "enum": ["verified", "conflict", "pending"]},
+        "coordinate_evidence": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["source_id", "latitude", "longitude", "locator", "evidence_quote"],
+            "properties": {
+              "source_id": {"type": "string"},
+              "latitude": {"type": "number"},
+              "longitude": {"type": "number"},
+              "locator": {"type": "string"},
+              "evidence_quote": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "url", "title", "publisher", "source_type", "reliability_tier", "language", "published_at", "applicable_at", "limitations"],
+        "properties": {
+          "source_id": {"type": "string"}, "url": {"type": "string"},
+          "title": {"type": "string"}, "publisher": {"type": "string"},
+          "source_type": {"type": "string", "enum": ["government", "unesco", "museum", "academic", "transport", "tourism_official", "reference", "fixture"]},
+          "reliability_tier": {"type": "string", "enum": ["primary", "authoritative", "secondary", "discovery_only"]},
+          "language": {"type": "string"}, "published_at": {"type": ["string", "null"]},
+          "applicable_at": {"type": ["string", "null"]}, "limitations": {"type": "string"}
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["claim_id", "statement", "claim_type", "importance", "volatility", "as_of", "source_refs"],
+        "properties": {
+          "claim_id": {"type": "string"},
+          "statement": {"type": "string"},
+          "claim_type": {"type": "string", "enum": ["fact", "interpretation", "legend", "tourism_promotion", "unknown"]},
+          "importance": {"type": "string", "enum": ["core", "supporting"]},
+          "volatility": {"type": "string", "enum": ["stable", "time_sensitive"]},
+          "as_of": {"type": ["string", "null"]},
+          "source_refs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["source_id", "locator", "evidence_quote", "relation"],
+              "properties": {
+                "source_id": {"type": "string"},
+                "locator": {"type": "string"},
+                "evidence_quote": {"type": "string"},
+                "relation": {"type": "string", "enum": ["supports", "contradicts", "context_only", "reported_as_legend"]}
+              }
+            }
+          }
+        }
+      }
+    },
+    "interesting_fact_claim_ids": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "string", "pattern": "^[Cc][0-9]+$"}},
+    "uniqueness_claim_ids": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^[Cc][0-9]+$"}},
+    "travel_claim_ids": {"type": "array", "items": {"type": "string", "pattern": "^[Cc][0-9]+$"}},
+    "unknowns": {"type": "array", "items": {"type": "string"}},
+    "further_questions": {"type": "array", "items": {"type": "string"}}
+  }
+}

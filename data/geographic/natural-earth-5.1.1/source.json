@@ -1,0 +1,11 @@
+{
+  "dataset": "Natural Earth Admin 0 Countries",
+  "version": "5.1.1",
+  "scale": "1:110m",
+  "source_url": "https://naturalearth.s3.amazonaws.com/5.1.1/110m_cultural/ne_110m_admin_0_countries.zip",
+  "sha256": "0f243aeac8ac6cf26f0417285b0bd33ac47f1b5bdb719fd3e0df37d03ea37110",
+  "downloaded_at": "2026-09-22T02:01:20+00:00",
+  "license": "Public domain",
+  "credit": "Made with Natural Earth",
+  "boundary_note": "Natural Earth default de facto boundary view"
+}

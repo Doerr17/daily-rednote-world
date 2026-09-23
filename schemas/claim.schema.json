@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "claim.schema.json",
+  "title": "Evidence-backed claim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["claim_id", "statement", "claim_type", "importance", "volatility", "as_of", "source_refs"],
+  "properties": {
+    "claim_id": {"type": "string", "pattern": "^c[0-9]{2,}$"},
+    "statement": {"type": "string", "minLength": 1},
+    "claim_type": {"type": "string", "enum": ["fact", "interpretation", "legend", "tourism_promotion", "unknown"]},
+    "importance": {"type": "string", "enum": ["core", "supporting"]},
+    "volatility": {"type": "string", "enum": ["stable", "time_sensitive"]},
+    "as_of": {"type": ["string", "null"]},
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "locator", "evidence_quote", "relation"],
+        "properties": {
+          "source_id": {"type": "string", "minLength": 1},
+          "locator": {"type": "string", "minLength": 1},
+          "evidence_quote": {"type": "string", "minLength": 1},
+          "relation": {"type": "string", "enum": ["supports", "contradicts", "context_only", "reported_as_legend"]}
+        }
+      }
+    }
+  }
+}
+

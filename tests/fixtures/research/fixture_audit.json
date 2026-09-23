@@ -1,0 +1,11 @@
+{
+  "audit_version": "1.0",
+  "claim_reviews": [
+    {"claim_id": "c01", "status": "supported", "reason": "测试摘录直接出现于 s01。", "verified_source_ids": ["s01"]},
+    {"claim_id": "c02", "status": "supported", "reason": "测试摘录直接出现于 s01。", "verified_source_ids": ["s01"]},
+    {"claim_id": "c03", "status": "supported", "reason": "两份独立测试来源给出相近坐标。", "verified_source_ids": ["s01", "s02"]}
+  ],
+  "coordinate_review": {"status": "supported", "reason": "两个测试坐标在容差内。"},
+  "overall_notes": ["TEST FIXTURE ONLY"]
+}
+

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1080, initial-scale=1">
+  <style>{{ css }}</style>
+</head>
+<body>
+<main class="card role-{{ card.role }}" data-card-number="{{ card.number }}">
+  {% if card.role != "location" %}
+  <img class="photo" src="{{ photo_uri }}" alt="{{ location.name_zh }}视觉素材">
+  <div class="wash"></div>
+  {% endif %}
+  <div class="frame">
+    <header class="masthead">
+      <span>DAILY WORLD · 每日探索世界</span>
+      <span>{{ "%02d"|format(card.number) }} / {{ "%02d"|format(card_total) }}</span>
+    </header>
+    {% if card.role == "location" %}
+      <section class="location-copy" data-fit>
+        <p class="eyebrow">WHERE IN THE WORLD</p>
+        <h1>{{ card.heading }}</h1>
+        <p class="place-line">{{ location.name_zh }} <span>/ {{ location.name_en }}</span></p>
+      </section>
+      <img class="map" src="{{ map_uri }}" alt="{{ location.name_zh }}世界定位图">
+      <footer class="map-footer">
+        <span>{{ location.country_zh }} · {{ location.region }} · {{ location.continent }}</span>
+        <span>Natural Earth {{ map_version }}</span>
+      </footer>
+    {% else %}
+      <section class="copy" data-fit>
+        <p class="eyebrow">{{ role_label }}</p>
+        {% if card.role == "cover" %}
+          <h1>{{ title }}</h1>
+          <p class="subtitle">{{ card.heading }}</p>
+        {% else %}
+          <h1>{{ card.heading }}</h1>
+        {% endif %}
+        <div class="rule"></div>
+        {% for block in card.blocks %}
+          <p class="body-copy">{{ block.text }}</p>
+        {% endfor %}
+      </section>
+      <footer class="photo-footer">
+        <span>{{ location.name_zh }} · {{ location.country_zh }}</span>
+        <span>{{ asset_credit }}</span>
+      </footer>
+    {% endif %}
+    {% if fixture_mode %}<div class="fixture">TEST FIXTURE ONLY · 禁止发布</div>{% endif %}
+  </div>
+</main>
+</body>
+</html>

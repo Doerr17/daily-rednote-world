@@ -1,0 +1,11 @@
+TEST FIXTURE ONLY. This document is not a real-world source and must never be published.
+
+Description paragraph 1
+The fixture buildings were carved directly from rock.
+
+Description paragraph 2
+Test trenches connect the carved structures.
+
+Coordinates section
+Coordinates: 12.0310, 39.0410.
+

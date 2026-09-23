@@ -1,0 +1,368 @@
+{
+  "seed_version": 1,
+  "checked_on": "2026-09-21",
+  "scope_note": "这些来源只用于核对候选地点身份与选题角度；正式成稿仍须在研究阶段重新打开来源并逐条建立证据。",
+  "locations": [
+    {
+      "slug": "ait-benhaddou",
+      "name_zh": "阿伊特·本·哈杜",
+      "name_en": "Aït-Ben-Haddou",
+      "aliases": ["Ait Ben Haddou", "Aït Ben Haddou", "阿伊特本哈杜"],
+      "country_code": "MA",
+      "country_zh": "摩洛哥",
+      "country_en": "Morocco",
+      "region": "北非",
+      "continent": "非洲",
+      "location_type": "聚落与建筑",
+      "coordinate_status": "pending_research",
+      "topic": {
+        "id": "ait-benhaddou-earthen-ksar",
+        "hook_zh": "一座用泥土筑成的防御性聚落，为什么能在高阿特拉斯山南麓保存下来？",
+        "angle_zh": "从围墙、角楼和密集住宅的空间关系，认识摩洛哥南部的传统夯土聚落。",
+        "themes": ["传统聚落", "夯土建筑", "商路"],
+        "visual_tags": ["赭色墙体", "角楼", "山麓"],
+        "visual_value": 5,
+        "knowledge_value": 4,
+        "story_value": 4,
+        "time_sensitivity": "low",
+        "source": {
+          "url": "https://whc.unesco.org/en/list/444",
+          "title": "Ksar of Ait-Ben-Haddou",
+          "publisher": "UNESCO World Heritage Centre",
+          "purpose": "核对传统前撒哈拉聚落、土建筑与防御性布局的选题依据"
+        }
+      }
+    },
+    {
+      "slug": "ilulissat-icefjord",
+      "name_zh": "伊卢利萨特冰湾",
+      "name_en": "Ilulissat Icefjord",
+      "aliases": ["Ilulissat Icefjord", "伊卢利萨特冰峡湾"],
+      "country_code": "GL",
+      "country_zh": "格陵兰",
+      "country_en": "Greenland",
+      "region": "北极地区",
+      "continent": "北美洲",
+      "location_type": "冰川与峡湾",
+      "coordinate_status": "pending_research",
+      "topic": {
+        "id": "ilulissat-glacier-to-sea",
+        "hook_zh": "格陵兰冰盖如何在这里一路抵达海面，并把峡湾推满冰山？",
+        "angle_zh": "围绕冰川入海、崩解与峡湾景观，解释这里为什么也是长期冰川研究地点。",
+        "themes": ["冰川", "气候", "地貌"],
+        "visual_tags": ["冰山", "峡湾", "极地海面"],
+        "visual_value": 5,
+        "knowledge_value": 5,
+        "story_value": 4,
+        "time_sensitivity": "medium",
+        "source": {
+          "url": "https://whc.unesco.org/en/list/1149",
+          "title": "Ilulissat Icefjord",
+          "publisher": "UNESCO World Heritage Centre",
+          "purpose": "核对冰盖入海、冰川崩解与研究价值的选题依据"
+        }
+      }
+    },
+    {
+      "slug": "matera-sassi",
+      "name_zh": "马泰拉石窟民居区",
+      "name_en": "The Sassi of Matera",
+      "aliases": ["Matera", "Sassi di Matera", "马泰拉", "马泰拉萨西"],
+      "country_code": "IT",
+      "country_zh": "意大利",
+      "country_en": "Italy",
+      "region": "南欧",
+      "continent": "欧洲",
+      "location_type": "城市与岩穴聚落",
+      "coordinate_status": "pending_research",
+      "topic": {
+        "id": "matera-caves-and-ravine",
+        "hook_zh": "一座城市怎样顺着峡谷和天然洞穴长出来？",
+        "angle_zh": "把洞穴住宅、岩窟教堂和石灰岩峡谷放在同一地形中理解，而不是只讲“古老”。",
+        "themes": ["城市地形", "岩穴建筑", "居住史"],
+        "visual_tags": ["石灰岩", "洞穴", "峡谷"],
+        "visual_value": 5,
+        "knowledge_value": 5,
+        "story_value": 5,
+        "time_sensitivity": "low",
+        "source": {
+          "url": "https://whc.unesco.org/en/list/670",
+          "title": "The Sassi and the Park of the Rupestrian Churches of Matera",
+          "publisher": "UNESCO World Heritage Centre",
+          "purpose": "核对洞穴聚落、岩窟建筑与地形适应的选题依据"
+        }
+      }
+    },
+    {
+      "slug": "socotra-archipelago",
+      "name_zh": "索科特拉群岛",
+      "name_en": "Socotra Archipelago",
+      "aliases": ["Socotra", "索科特拉岛", "索科特拉"],
+      "country_code": "YE",
+      "country_zh": "也门",
+      "country_en": "Yemen",
+      "region": "西亚与印度洋",
+      "continent": "亚洲",
+      "location_type": "岛屿与生物多样性",
+      "coordinate_status": "pending_research",
+      "topic": {
+        "id": "socotra-island-endemism",
+        "hook_zh": "为什么这组印度洋岛屿保存了如此多别处没有的物种？",
+        "angle_zh": "从长期隔离与特有性认识索科特拉，同时把生态价值与旅游想象分开。",
+        "themes": ["岛屿", "特有物种", "生物多样性"],
+        "visual_tags": ["龙血树", "干旱山地", "海岛"],
+        "visual_value": 5,
+        "knowledge_value": 5,
+        "story_value": 4,
+        "time_sensitivity": "medium",
+        "source": {
+          "url": "https://whc.unesco.org/en/list/1263",
+          "title": "Socotra Archipelago",
+          "publisher": "UNESCO World Heritage Centre",
+          "purpose": "核对群岛位置、生物多样性与高特有性的选题依据"
+        }
+      }
+    },
+    {
+      "slug": "shirakawa-go-gokayama",
+      "name_zh": "白川乡与五箇山历史村落",
+      "name_en": "Historic Villages of Shirakawa-go and Gokayama",
+      "aliases": ["Shirakawa-go", "Gokayama", "白川乡", "五箇山"],
+      "country_code": "JP",
+      "country_zh": "日本",
+      "country_en": "Japan",
+      "region": "东亚",
+      "continent": "亚洲",
+      "location_type": "乡村聚落",
+      "coordinate_status": "pending_research",
+      "topic": {
+        "id": "shirakawa-steep-thatch",
+        "hook_zh": "这些村屋为什么需要陡得像合掌一样的茅草屋顶？",
+        "angle_zh": "把合掌造住宅放回山地环境、养蚕生产和村落协作中理解。",
+        "themes": ["传统村落", "民居", "生产方式"],
+        "visual_tags": ["陡坡屋顶", "茅草", "山谷村落"],
+        "visual_value": 5,
+        "knowledge_value": 4,
+        "story_value": 4,
+        "time_sensitivity": "low",
+        "source": {
+          "url": "https://whc.unesco.org/en/list/734",
+          "title": "Historic Villages of Shirakawa-go and Gokayama",
+          "publisher": "UNESCO World Heritage Centre",
+          "purpose": "核对合掌造住宅、山地环境与养蚕背景的选题依据"
+        }
+      }
+    },
+    {
+      "slug": "wadi-rum",
+      "name_zh": "瓦迪拉姆保护区",
+      "name_en": "Wadi Rum Protected Area",
+      "aliases": ["Wadi Rum", "月亮谷", "瓦迪拉姆"],
+      "country_code": "JO",
+      "country_zh": "约旦",
+      "country_en": "Jordan",
+      "region": "西亚",
+      "continent": "亚洲",
+      "location_type": "沙漠景观与文化遗存",
+      "coordinate_status": "pending_research",
+      "topic": {
+        "id": "wadi-rum-rock-and-inscriptions",
+        "hook_zh": "沙漠里的峡谷、石拱和岩刻，怎样记录人与环境的长期互动？",
+        "angle_zh": "同时阅读砂岩地貌与岩画、铭文，避免把瓦迪拉姆只写成电影式沙漠背景。",
+        "themes": ["沙漠地貌", "岩刻", "人地关系"],
+        "visual_tags": ["石拱", "砂岩峭壁", "沙漠"],
+        "visual_value": 5,
+        "knowledge_value": 5,
+        "story_value": 5,
+        "time_sensitivity": "low",
+        "source": {
+          "url": "https://whc.unesco.org/en/list/1377",
+          "title": "Wadi Rum Protected Area",
+          "publisher": "UNESCO World Heritage Centre",
+          "purpose": "核对沙漠地貌、岩刻铭文与长期人地互动的选题依据"
+        }
+      }
+    },
+    {
+      "slug": "nan-madol",
+      "name_zh": "南马都尔",
+      "name_en": "Nan Madol",
+      "aliases": ["Nan Madol", "南马杜尔"],
+      "country_code": "FM",
+      "country_zh": "密克罗尼西亚联邦",
+      "country_en": "Federated States of Micronesia",
+      "region": "密克罗尼西亚",
+      "continent": "大洋洲",
+      "location_type": "岛屿考古遗址",
+      "coordinate_status": "pending_research",
+      "topic": {
+        "id": "nan-madol-artificial-islets",
+        "hook_zh": "一百多座玄武岩与珊瑚石人工小岛，如何组成太平洋上的仪式中心？",
+        "angle_zh": "从水道、人工岛和巨石建筑理解南马都尔的空间组织，也正视遗址保护压力。",
+        "themes": ["考古", "太平洋岛屿", "仪式空间"],
+        "visual_tags": ["玄武岩墙", "水道", "人工岛"],
+        "visual_value": 5,
+        "knowledge_value": 5,
+        "story_value": 5,
+        "time_sensitivity": "medium",
+        "source": {
+          "url": "https://whc.unesco.org/en/list/1503",
+          "title": "Nan Madol: Ceremonial Centre of Eastern Micronesia",
+          "publisher": "UNESCO World Heritage Centre",
+          "purpose": "核对人工岛数量级、建筑材料与仪式中心性质的选题依据"
+        }
+      }
+    },
+    {
+      "slug": "lalibela",
+      "name_zh": "拉利贝拉岩石教堂",
+      "name_en": "Rock-Hewn Churches, Lalibela",
+      "aliases": ["Lalibela", "拉利贝拉"],
+      "country_code": "ET",
+      "country_zh": "埃塞俄比亚",
+      "country_en": "Ethiopia",
+      "region": "东非",
+      "continent": "非洲",
+      "location_type": "宗教建筑与聚落",
+      "coordinate_status": "pending_research",
+      "topic": {
+        "id": "lalibela-hewn-from-rock",
+        "hook_zh": "教堂不是一块块垒起来，而是从整片岩石中向下凿出，会形成怎样的空间？",
+        "angle_zh": "从整体岩石雕凿、沟槽通道和持续中的朝圣传统理解拉利贝拉。",
+        "themes": ["宗教建筑", "岩石工程", "朝圣"],
+        "visual_tags": ["下沉庭院", "十字平面", "红色岩石"],
+        "visual_value": 5,
+        "knowledge_value": 5,
+        "story_value": 5,
+        "time_sensitivity": "medium",
+        "source": {
+          "url": "https://whc.unesco.org/en/list/18",
+          "title": "Rock-Hewn Churches, Lalibela",
+          "publisher": "UNESCO World Heritage Centre",
+          "purpose": "核对整体岩石雕凿、教堂群与持续宗教功能的选题依据"
+        }
+      }
+    },
+    {
+      "slug": "lencois-maranhenses",
+      "name_zh": "伦索伊斯-马拉年塞斯国家公园",
+      "name_en": "Lençóis Maranhenses National Park",
+      "aliases": ["Lençóis Maranhenses", "Lencois Maranhenses", "伦索伊斯马拉年塞斯"],
+      "country_code": "BR",
+      "country_zh": "巴西",
+      "country_en": "Brazil",
+      "region": "南美洲东北部",
+      "continent": "南美洲",
+      "location_type": "沙丘与潟湖",
+      "coordinate_status": "pending_research",
+      "topic": {
+        "id": "lencois-rain-lagoons",
+        "hook_zh": "看起来像沙漠的白色沙丘，为什么雨季会出现成片潟湖？",
+        "angle_zh": "从降雨、水位与移动沙丘解释季节性水景，避免把它误写成普通沙漠。",
+        "themes": ["沙丘", "季节性水体", "海岸地貌"],
+        "visual_tags": ["白色沙丘", "蓝色潟湖", "曲线"],
+        "visual_value": 5,
+        "knowledge_value": 5,
+        "story_value": 4,
+        "time_sensitivity": "medium",
+        "source": {
+          "url": "https://whc.unesco.org/en/list/1611",
+          "title": "Lençóis Maranhenses National Park",
+          "publisher": "UNESCO World Heritage Centre",
+          "purpose": "核对海岸沙丘、雨季潟湖和地貌过程的选题依据"
+        }
+      }
+    },
+    {
+      "slug": "sewell-mining-town",
+      "name_zh": "塞维尔矿业城镇",
+      "name_en": "Sewell Mining Town",
+      "aliases": ["Sewell", "塞维尔矿城"],
+      "country_code": "CL",
+      "country_zh": "智利",
+      "country_en": "Chile",
+      "region": "南美洲安第斯山区",
+      "continent": "南美洲",
+      "location_type": "工业遗产城镇",
+      "coordinate_status": "pending_research",
+      "topic": {
+        "id": "sewell-staircase-town",
+        "hook_zh": "山坡陡到无法通车，一座矿业城镇会怎样围绕楼梯生长？",
+        "angle_zh": "从中央阶梯、彩色木建筑与铜矿工业联系，理解这座高山公司城镇。",
+        "themes": ["工业遗产", "矿业城镇", "山地城市"],
+        "visual_tags": ["彩色木屋", "中央阶梯", "安第斯山"],
+        "visual_value": 5,
+        "knowledge_value": 4,
+        "story_value": 5,
+        "time_sensitivity": "low",
+        "source": {
+          "url": "https://whc.unesco.org/en/list/1214",
+          "title": "Sewell Mining Town",
+          "publisher": "UNESCO World Heritage Centre",
+          "purpose": "核对陡坡、中央阶梯、彩色木建筑与矿业城镇背景的选题依据"
+        }
+      }
+    },
+    {
+      "slug": "roros-mining-town",
+      "name_zh": "勒罗斯矿业城镇",
+      "name_en": "Røros Mining Town and the Circumference",
+      "aliases": ["Røros", "Roros", "勒罗斯"],
+      "country_code": "NO",
+      "country_zh": "挪威",
+      "country_en": "Norway",
+      "region": "北欧",
+      "continent": "欧洲",
+      "location_type": "工业遗产城镇",
+      "coordinate_status": "pending_research",
+      "topic": {
+        "id": "roros-wooden-mining-town",
+        "hook_zh": "严寒、偏远又缺少良好耕地，一座木结构矿城如何维持三百多年？",
+        "angle_zh": "把铜矿、木城、冬季运输路线和周围文化景观作为一个系统来看。",
+        "themes": ["工业遗产", "寒地生活", "矿业"],
+        "visual_tags": ["木屋", "积雪", "矿业景观"],
+        "visual_value": 4,
+        "knowledge_value": 5,
+        "story_value": 5,
+        "time_sensitivity": "low",
+        "source": {
+          "url": "https://whc.unesco.org/en/list/55",
+          "title": "Røros Mining Town and the Circumference",
+          "publisher": "UNESCO World Heritage Centre",
+          "purpose": "核对铜矿城镇、木建筑与严寒环境适应的选题依据"
+        }
+      }
+    },
+    {
+      "slug": "ha-long-cat-ba",
+      "name_zh": "下龙湾—吉婆群岛",
+      "name_en": "Ha Long Bay - Cat Ba Archipelago",
+      "aliases": ["Ha Long Bay", "Cat Ba Archipelago", "下龙湾", "吉婆群岛"],
+      "country_code": "VN",
+      "country_zh": "越南",
+      "country_en": "Viet Nam",
+      "region": "东南亚",
+      "continent": "亚洲",
+      "location_type": "海岸喀斯特",
+      "coordinate_status": "pending_research",
+      "topic": {
+        "id": "halong-drowned-tower-karst",
+        "hook_zh": "海水淹进喀斯特地貌后，为什么会留下上千座石灰岩岛峰？",
+        "angle_zh": "用海侵塔状喀斯特解释岛峰、洞穴和海蚀地形，而不是只描述海面风景。",
+        "themes": ["喀斯特", "海岸地貌", "岛屿"],
+        "visual_tags": ["石灰岩塔峰", "海湾", "洞穴"],
+        "visual_value": 5,
+        "knowledge_value": 5,
+        "story_value": 4,
+        "time_sensitivity": "medium",
+        "source": {
+          "url": "https://whc.unesco.org/en/list/672",
+          "title": "Ha Long Bay - Cat Ba Archipelago",
+          "publisher": "UNESCO World Heritage Centre",
+          "purpose": "核对海侵塔状喀斯特、岛峰和洞穴地貌的选题依据"
+        }
+      }
+    }
+  ]
+}
+

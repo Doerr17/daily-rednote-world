@@ -1,0 +1,81 @@
+{
+  "database": "data/world.db",
+  "migrations": "data/migrations",
+  "seed_file": "data/seeds/locations.json",
+  "recent_history_limit": 12,
+  "hard_similarity_threshold": 0.72,
+  "minimum_seed_locations": 8,
+  "research": {
+    "user_agent": "daily-world-rednote/0.1 (local research workflow; contact: human reviewer)",
+    "request_timeout_seconds": 25,
+    "request_retries": 2,
+    "minimum_host_interval_seconds": 1.0,
+    "coordinate_tolerance_km": 10.0,
+    "minimum_sources": 2,
+    "codex_timeout_seconds": 900,
+    "cache_directory": "data/cache/http"
+  },
+  "content": {
+    "title_min": 3,
+    "title_max": 5,
+    "title_max_chars": 28,
+    "card_min": 5,
+    "card_max": 6,
+    "card_heading_max_chars": 22,
+    "card_body_max_chars": 260,
+    "caption_max_chars": 1200,
+    "within_package_similarity_threshold": 0.72,
+    "recent_similarity_threshold": 0.68,
+    "recent_content_limit": 30,
+    "blocked_phrases": [
+      "你知道吗",
+      "这里不仅",
+      "仿佛走进了童话世界",
+      "每一处都诉说着历史",
+      "令人叹为观止",
+      "一生必去",
+      "宝藏小众旅行地",
+      "小众宝藏",
+      "此生必去"
+    ],
+    "false_visit_phrases": ["我去过", "亲测", "实拍", "我在这里", "亲自体验"]
+  },
+  "media": {
+    "commons_api": "https://commons.wikimedia.org/w/api.php",
+    "search_limit": 8,
+    "minimum_assets": 3,
+    "thumbnail_width": 1800,
+    "minimum_width": 1080,
+    "minimum_height": 1080,
+    "location_tolerance_km": 25.0,
+    "request_timeout_seconds": 30,
+    "user_agent": "daily-world-rednote/0.1 (local media research; contact: human reviewer)",
+    "accepted_licenses": ["CC BY", "CC BY-SA", "CC0", "Public domain", "PDM"]
+  },
+  "map": {
+    "dataset": "Natural Earth Admin 0 Countries",
+    "version": "5.1.1",
+    "scale": "1:110m",
+    "url": "https://naturalearth.s3.amazonaws.com/5.1.1/110m_cultural/ne_110m_admin_0_countries.zip",
+    "directory": "data/geographic/natural-earth-5.1.1"
+  },
+  "render": {
+    "width": 1080,
+    "height": 1440,
+    "browser_channel": "msedge",
+    "font_family": "Microsoft YaHei",
+    "minimum_png_bytes": 30000
+  },
+  "selection_weights": {
+    "quality": 1.0,
+    "same_country": 4.0,
+    "same_region": 2.0,
+    "same_continent_immediate": 1.2,
+    "same_continent_recent": 0.35,
+    "same_type_immediate": 1.0,
+    "same_type_recent": 0.4,
+    "theme_overlap": 1.5,
+    "visual_overlap": 1.2,
+    "text_similarity": 3.0
+  }
+}

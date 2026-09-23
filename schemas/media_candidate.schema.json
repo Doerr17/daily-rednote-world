@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Wikimedia Commons media candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title", "source_page", "file_url", "thumbnail_url", "creator",
+    "license", "license_url", "credit", "attribution_required", "width",
+    "height", "mime", "commons_sha1", "description", "categories",
+    "coordinates", "rights_status", "location_match_status",
+    "location_match_evidence", "accessed_at"
+  ],
+  "properties": {
+    "title": {"type": "string"},
+    "source_page": {"type": "string"},
+    "file_url": {"type": "string"},
+    "thumbnail_url": {"type": "string"},
+    "creator": {"type": "string"},
+    "license": {"type": "string"},
+    "license_url": {"type": "string"},
+    "credit": {"type": "string"},
+    "attribution_required": {"type": "boolean"},
+    "width": {"type": "integer"},
+    "height": {"type": "integer"},
+    "mime": {"type": "string"},
+    "commons_sha1": {"type": "string"},
+    "description": {"type": "string"},
+    "categories": {"type": "array", "items": {"type": "string"}},
+    "coordinates": {
+      "anyOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["latitude", "longitude"],
+          "properties": {
+            "latitude": {"type": "number"},
+            "longitude": {"type": "number"}
+          }
+        }
+      ]
+    },
+    "rights_status": {"type": "string", "enum": ["complete", "incomplete", "unsupported"]},
+    "location_match_status": {"type": "string", "enum": ["verified", "pending_review", "rejected"]},
+    "location_match_evidence": {"type": "array", "items": {"type": "string"}},
+    "accessed_at": {"type": "string"}
+  }
+}

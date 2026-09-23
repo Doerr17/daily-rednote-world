@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence-bound content draft",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "topic_id", "fixture_mode", "narrative_strategy",
+    "title_options", "caption", "cards", "learning_notes"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "topic_id": {"type": "string"},
+    "fixture_mode": {"type": "boolean"},
+    "narrative_strategy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["angle", "opening_method", "structure_rationale", "tone_keywords"],
+      "properties": {
+        "angle": {"type": "string"},
+        "opening_method": {"type": "string"},
+        "structure_rationale": {"type": "string"},
+        "tone_keywords": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "title_options": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["text", "claim_refs"],
+        "properties": {
+          "text": {"type": "string"},
+          "claim_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+        }
+      }
+    },
+    "caption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["paragraphs", "hashtags"],
+      "properties": {
+        "paragraphs": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["text", "claim_refs"],
+            "properties": {
+              "text": {"type": "string"},
+              "claim_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+            }
+          }
+        },
+        "hashtags": {"type": "array", "minItems": 3, "maxItems": 8, "items": {"type": "string"}}
+      }
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["number", "role", "heading", "heading_claim_refs", "blocks"],
+        "properties": {
+          "number": {"type": "integer"},
+          "role": {"type": "string", "enum": ["cover", "location", "feature", "story", "facts", "summary"]},
+          "heading": {"type": "string"},
+          "heading_claim_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "blocks": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["text", "claim_refs"],
+              "properties": {
+                "text": {"type": "string"},
+                "claim_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+              }
+            }
+          }
+        }
+      }
+    },
+    "learning_notes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["overview", "sections", "unknowns", "further_questions"],
+      "properties": {
+        "overview": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["text", "claim_refs"],
+          "properties": {
+            "text": {"type": "string"},
+            "claim_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+          }
+        },
+        "sections": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["heading", "items"],
+            "properties": {
+              "heading": {"type": "string"},
+              "items": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["text", "claim_refs"],
+                  "properties": {
+                    "text": {"type": "string"},
+                    "claim_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "unknowns": {"type": "array", "items": {"type": "string"}},
+        "further_questions": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

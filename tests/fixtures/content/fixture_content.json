@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "topic_id": "fixture-rock-hewn-place",
+  "fixture_mode": true,
+  "narrative_strategy": {
+    "angle": "从岩石雕凿与沟槽连接理解空间结构",
+    "opening_method": "先写材料与建造方式，再转向位置和连接关系",
+    "structure_rationale": "五张卡分别承担识别、定位、建筑、连接和复盘功能",
+    "tone_keywords": ["具体", "克制", "证据导向"]
+  },
+  "title_options": [
+    {"text": "从岩石里凿出的测试建筑群", "claim_refs": ["c01"]},
+    {"text": "沟槽如何连接一组岩石建筑", "claim_refs": ["c01", "c02"]},
+    {"text": "用两份记录定位一处测试遗产", "claim_refs": ["c03"]}
+  ],
+  "caption": {
+    "paragraphs": [
+      {"text": "这份测试档案关注一组直接从岩石中雕凿出的建筑。它的辨识度来自建造方式，而不是额外添加的装饰。", "claim_refs": ["c01"]},
+      {"text": "建筑之间有沟槽相连，地点中心则由两份独立测试记录共同支持。阅读这个地点时，空间关系和证据来源同样重要。", "claim_refs": ["c02", "c03"]}
+    ],
+    "hashtags": ["#世界地理", "#建筑观察", "#地点档案"]
+  },
+  "cards": [
+    {
+      "number": 1,
+      "role": "cover",
+      "heading": "岩石里形成的建筑群",
+      "heading_claim_refs": ["c01"],
+      "blocks": [{"text": "一组直接从岩石中雕凿出来的测试建筑。", "claim_refs": ["c01"]}]
+    },
+    {
+      "number": 2,
+      "role": "location",
+      "heading": "两份记录确认位置",
+      "heading_claim_refs": ["c03"],
+      "blocks": [{"text": "地点中心坐标由两份独立测试记录共同支持。", "claim_refs": ["c03"]}]
+    },
+    {
+      "number": 3,
+      "role": "feature",
+      "heading": "建筑从岩体中雕出",
+      "heading_claim_refs": ["c01"],
+      "blocks": [{"text": "这里的建筑群采用岩石雕凿方式形成。", "claim_refs": ["c01"]}]
+    },
+    {
+      "number": 4,
+      "role": "story",
+      "heading": "沟槽组织空间",
+      "heading_claim_refs": ["c02"],
+      "blocks": [{"text": "测试用沟槽把不同建筑连接起来。", "claim_refs": ["c02"]}]
+    },
+    {
+      "number": 5,
+      "role": "facts",
+      "heading": "记住两种关系",
+      "heading_claim_refs": ["c01", "c02"],
+      "blocks": [{"text": "岩体与建筑说明它如何形成，沟槽与建筑说明各部分如何相连。", "claim_refs": ["c01", "c02"]}]
+    }
+  ],
+  "learning_notes": {
+    "overview": {
+      "text": "TEST FIXTURE ONLY：这份笔记只验证证据约束和归档流程，不描述真实地点。",
+      "claim_refs": ["c01"]
+    },
+    "sections": [
+      {
+        "heading": "建造与空间",
+        "items": [
+          {"text": "建筑群由岩石雕凿形成。", "claim_refs": ["c01"]},
+          {"text": "沟槽连接建筑。", "claim_refs": ["c02"]}
+        ]
+      },
+      {
+        "heading": "位置证据",
+        "items": [
+          {"text": "中心坐标有两份独立测试记录支持。", "claim_refs": ["c03"]}
+        ]
+      }
+    ],
+    "unknowns": ["此测试资料不包含真实开放时间。"],
+    "further_questions": ["真实运行时应如何界定遗产边界与地点中心点？"]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Independent content quality audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["audit_version", "issues", "overall_assessment"],
+  "properties": {
+    "audit_version": {"type": "string", "const": "1.0"},
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["severity", "code", "location", "message"],
+        "properties": {
+          "severity": {"type": "string", "enum": ["error", "warning"]},
+          "code": {"type": "string"},
+          "location": {"type": "string"},
+          "message": {"type": "string"}
+        }
+      }
+    },
+    "overall_assessment": {"type": "string"}
+  }
+}
+

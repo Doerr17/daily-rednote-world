@@ -1,0 +1,5 @@
+TEST FIXTURE ONLY. This document is not a real-world source and must never be published.
+
+Gazetteer record
+Recorded centre: 12.0312 latitude and 39.0412 longitude.
+

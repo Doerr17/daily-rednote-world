@@ -1,0 +1,48 @@
+{
+  "batchcomplete": true,
+  "query": {
+    "pages": [
+      {
+        "pageid": 1,
+        "title": "File:Fixture place.jpg",
+        "coordinates": [{"lat": 12.0312, "lon": 39.0412}],
+        "categories": [{"title": "Category:Fixture Rock-Hewn Place"}],
+        "imageinfo": [{
+          "url": "https://upload.wikimedia.org/fixture-original.jpg",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Fixture_place.jpg",
+          "thumburl": "https://upload.wikimedia.org/fixture-thumb.jpg",
+          "width": 2400,
+          "height": 3200,
+          "mime": "image/jpeg",
+          "sha1": "fixture-sha1",
+          "extmetadata": {
+            "Artist": {"value": "Fixture Photographer"},
+            "LicenseShortName": {"value": "CC BY-SA 4.0"},
+            "LicenseUrl": {"value": "https://creativecommons.org/licenses/by-sa/4.0/"},
+            "Credit": {"value": "Fixture Photographer / Wikimedia Commons"},
+            "AttributionRequired": {"value": "true"},
+            "ImageDescription": {"value": "A view of Fixture Rock-Hewn Place"}
+          }
+        }]
+      },
+      {
+        "pageid": 2,
+        "title": "File:Unknown place.jpg",
+        "categories": [{"title": "Category:Unrelated"}],
+        "imageinfo": [{
+          "url": "https://upload.wikimedia.org/unknown.jpg",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Unknown_place.jpg",
+          "thumburl": "https://upload.wikimedia.org/unknown-thumb.jpg",
+          "width": 800,
+          "height": 600,
+          "mime": "image/jpeg",
+          "sha1": "unknown-sha1",
+          "extmetadata": {
+            "Artist": {"value": ""},
+            "ImageDescription": {"value": "An unrelated view"}
+          }
+        }]
+      }
+    ]
+  }
+}
